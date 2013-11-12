@@ -5,7 +5,7 @@ This app shows you how easy it is to start charging credit cards and remain PCI-
 
 To have the transactions show up in your PaymentSpring dashboard, replace the public/private keys with your own.
 
-For complete documentation, checkout out [https://www.paymentspring.com/docs/api/rest](https://www.paymentspring.com/docs/api/rest)
+For complete documentation, checkout: [https://www.paymentspring.com/docs/api/rest](https://www.paymentspring.com/docs/api/rest)
 
 Run this app by:
 
@@ -17,7 +17,7 @@ $ bundle exec unicorn
 
 Troubleshooting
 -----------------
-If you run into any errors after running the last command, please make sure you don't have anything currently running on port 8080.
+If you see any errors after running the last command, please make sure you don't have anything currently running on port 8080.
 
 Step 0: Signing Up
 -------------------
@@ -25,13 +25,13 @@ Go to [https://www.paymentspring.com](https://www.paymentspring.com), create an 
 
 Step 1: Generating a Token
 ---------------------------
-The easiest way to generate a token is to create a form with the input fields for cardholder name, credit card number, csc, expiration month, and expiration year. Make sure these input fields don't have "name" attributes so the sensitive data isn't posted to your server. When the form is submitted, use Javascript to pass in the card information to the [paymentspring.js](https://www.paymentspring.com/js/paymentspring.js) library by calling...
+The easiest way to generate a token is to create a form with the input fields for cardholder name, credit card number, csc, expiration month, and expiration year. Make sure these input fields don't have "name" attributes so the sensitive data isn't posted to your server. When the form is submitted, use Javascript to pass in the card information to the [paymentspring.js](https://www.paymentspring.com/js/paymentspring.js) library by calling:
 
 ```Javascript
 paymentspring.generateToken(public_key, card_number, csc, card_holder, exp_month, exp_year, callback);
 ```
 
-The data passed to the callback will contain a JSON formatted response from the PaymentSpring token API. There is a lot of information being passed back, but the only thing we need to start charging cards is the "id" field of the JSON. This is the token you will use to charge the credit card. For now, load up the token into a hidden field and submit the form.
+The data passed to the callback will contain a JSON formatted response from the PaymentSpring token API. A lot of information is being passed back, but the only thing we need to start charging cards is the "id" field of the JSON. This is the token you will use to charge the credit card. For now, load up the token into a hidden field and submit the form.
 
 Step 2: Charging the Card with the Token
 ----------------------------------------
