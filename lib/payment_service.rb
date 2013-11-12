@@ -16,8 +16,6 @@ class PaymentService < Sinatra::Base
           erb :payment_form
       else
           @transaction = JSON.parse(response)
-          require 'pp'
-          pp @transaction
           erb :success
       end
    end
