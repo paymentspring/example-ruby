@@ -10,7 +10,7 @@ For complete documentation, checkout out [https://www.paymentspring.com/docs/api
 Run this app by:
 
 Checkout this repo
-```Javascript
+```Shell
 $ git clone git://github.com/paymentspring/example-ruby.git
 $ bundle install
 $ bundle exec unicorn
