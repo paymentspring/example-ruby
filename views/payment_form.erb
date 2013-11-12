@@ -1,165 +1,80 @@
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="https://www.paymentspring.com/js/paymentspring.js"></script>
-<script>
-function makeToken() {
-cc = $("#cc").val();
-csc = $("#csc").val();
-card_exp_month = $("#month").val();
-card_exp_year = $("#year").val();
-card_owner_name = $("#name").val();
-cc = $("#cc").val();
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PaymentSpring Demo site</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-paymentspring.generateToken(  "test_0b3ec0303553d0096dacbf966258a11689361b1eea80d618d13c11a7a9",
-                                cc,
-                                csc,
-                                card_owner_name,
-                                card_exp_month,
-                                card_exp_year,
-                                function (resp) {
-                    if (resp.errors) {
-			card_errors_ul = $("#card_errors")
-						card_errors_ul.empty();
-						$.each(resp.errors, function(index, e) {
-							$(card_errors_ul).append('<li>'+e.message+'</li>')
-						})
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-                    } else {
-                        $("#token").val(resp.id);
-                        $("#form").submit();
-                    }
-                });
-}
-</script>
-<head>
-<style>
-		
-		*:focus{
-			outline:none; /* Prevents blue border in Webkit */
-		}
+		<header>
+			<img src="img/logo-header.png" alt="PaymentSpring">
+		</header>
 
-		body {
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /*  */
-		}
-		
-		#top_bit {
-			width:760px;
-			margin: 0 auto;
-		}
-		
-		form {
-			width:300px;
-			margin: 20px auto;
-		}
+		<section role="main">
+	        <ul id="card_errors" class="errors">
+				<li style="display: none"></li>
+				<% if defined?(@errors) then @errors.each do |e| %>
+				   <li><%=e["message"]%></li>
+				<% end end %>
+			</ul>
+			<form action="/" method="post" id="form">
+				<p class="price"><strong>Amount:</strong> $20.00</p>
+				<label for="name">Cardholder Name</label>
+				<input type="text" id="name" name="name">
+				<label for="cc">Credit Card Number</label>
+				<input type="text" id="cc" name="cc">
+				<label for="csc">CSC</label>
+				<input type="text" id="csc" name="csc">
 
-		p {
-			line-height: 1.6;
-		}
+				<label for="month">Expiration Month</label>
+				<select id="month">
+					<option></option>
+					<option value="1">01</option>
+					<option value="2">02</option>
+					<option value="3">03</option>
+					<option value="4">04</option>
+					<option value="5">05</option>
+					<option value="6">06</option>
+					<option value="7">07</option>
+					<option value="8">08</option>
+					<option value="9">09</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
 
-		input, textarea, select {
-			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-			background-color:#fff;
-			border:1px solid #ccc;
-			font-size:20px;
-			width:300px;
-			min-height:30px;
-			display:block;
-			margin-bottom:16px;
-			margin-top:8px;
-			
-			-webkit-border-radius:5px;
-			-moz-border-radius:5px;
-			border-radius:5px;
-			
-			-webkit-transition: all 0.5s ease-in-out;
-			-moz-transition: all 0.5s ease-in-out;
-			transition: all 0.5s ease-in-out;
-		}
-		
-		textarea {
-				min-height:200px;
-		}
+				<label for="year">Expiration Year</label>
+				<select id="year">
+	                <option></option>
+	                <option value="2013">2013</option>
+	                <option value="2014">2014</option>
+	                <option value="2015">2015</option>
+	                <option value="2016">2016</option>
+	                <option value="2017">2017</option>
+	                <option value="2018">2018</option>
+	                <option value="2019">2019</option>
+	                <option value="2020">2020</option>
+	                <option value="2021">2021</option>
+	                <option value="2022">2022</option>
+	                <option value="2023">2023</option>
+	                <option value="2024">2024</option>
+				</select>
+				<p class="warning">Since this account is using test keys, you must use <a href="https://www.paymentspring.com/docs/test_data">valid test card data</a></p>
+				<input type="hidden" name="token" id="token">
+				<input type="button" onClick="makeToken()" value="Charge">
+			</form>
+		</section>
 
-		input:focus, textarea:focus {
-			-webkit-box-shadow:0 0 25px #ccc;
-			-moz-box-shadow:0 0 25px #ccc;
-			box-shadow:0 0 25px #ccc;
-			
-			-webkit-transform: scale(1.05);
-			-moz-transform: scale(1.05);
-			transform: scale(1.05);
-		}
-		
-		/* The interesting bit */
-		
-		input:not(:focus), textarea:not(:focus) {
-			opacity:0.5;
-		}
-		
-		input:required, textarea:required {
-			background:url("/tests/formdemo/asterisk_orange.png") no-repeat 280px 7px;						
-		}
-
-		input:valid, textarea:valid {
-			background:url("/tests/formdemo/tick.png") no-repeat 280px 5px;			
-		}		
-
-		input:focus:invalid, textarea:focus:invalid {
-			background:url("/tests/formdemo/cancel.png") no-repeat 280px 7px;						
-		}
-
-		input[type=submit] {
-			padding:10px;
-			background:none;
-			opacity:1.0;
-		}
-		
-		</style>
-</head><div>
-<ul id="card_errors">
-<li style="display: none"></li>
-<% if defined?(@errors) then @errors.each do |e| %>
-   <li><%=e["message"]%></li>
-<% end end %>
-</ul>
-<form action="/" method="post" id="form">
-	<p>Since this account is using test keys, you must use <a href="https://www.paymentspring.com/docs/test_data">valid test card data</a></p>
-<p>Amount: $20.00</p>
-Cardholder Name<input type="text" id="name"/>
-Credit Card Number<input type="text" id="cc"/>
-CSC<input type="text" id="csc"/>
-
-Expiration Month<select id="month">
-						<option></option>
-						<option value="1">01</option>
-						<option value="2">02</option>
-						<option value="3">03</option>
-						<option value="4">04</option>
-						<option value="5">05</option>
-						<option value="6">06</option>
-						<option value="7">07</option>
-						<option value="8">08</option>
-						<option value="9">09</option>
-						<option value="10">10</option>
-						<option value="11">11</option>
-						<option value="12">12</option>
-</select>
-
-Expiration Year<select id="year">
-                                                <option></option>
-                                                <option value="2013">2013</option>
-                                                <option value="2014">2014</option>
-                                                <option value="2015">2015</option>
-                                                <option value="2016">2016</option>
-                                                <option value="2017">2017</option>
-                                                <option value="2018">2018</option>
-                                                <option value="2019">2019</option>
-                                                <option value="2020">2020</option>
-                                                <option value="2021">2021</option>
-                                                <option value="2022">2022</option>
-                                                <option value="2023">2023</option>
-                                                <option value="2024">2024</option>
-</select>
-<input type="hidden" name="token" id="token"/>
-<input type="button" onClick="makeToken()" value="Charge"/>
-<input type="submit" style="display:none"/>
-</form>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="https://www.paymentspring.com/js/paymentspring.js"></script>
+		<script src="/js/main.js"></script>
+    </body>
+</html>

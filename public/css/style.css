@@ -1,0 +1,132 @@
+* { box-sizing: border-box; -moz-box-sizing: border-box;}
+
+*:focus{
+	outline:none; /* Prevents blue border in Webkit */
+}
+
+body {
+	font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	background: #F6F6F6;
+	color: #231F20;
+}
+
+header {
+	text-align: center;
+	margin: 60px 0 40px;
+}
+
+h1 {
+	font-size: 2.2em;
+}
+
+a:link, a:visited {
+	color: white;
+}
+a:hover, a:active {
+	color: #231F20;
+}
+
+[role="main"] {
+	padding: 5px 20px;
+	background: #FEFFFE;
+	width:480px;
+	margin: 0 auto;
+	border-radius: 4px;
+}
+
+[type="button"] {
+	background: #4E697C;
+	text-transform: uppercase;
+	color: white;
+	font-weight: bold;
+	font-size: 1.1em;
+	padding: 15px 20px;
+	border-radius: 8px;
+	width: auto;
+	margin: 0 auto;
+	border: 0 none;
+	cursor: pointer;
+}
+
+.center {
+	text-align: center;
+}
+
+.warning {
+	border-radius: 4px;
+	padding: 10px;
+	margin: 16px 0;
+	background: #55A7CA;
+	color: white;
+}
+
+.price {
+	font-size: 1.8em;
+	text-align: center;
+}
+
+.price > strong {
+
+}
+
+form {
+	width: 300px;
+	margin: 25px auto;
+}
+
+p {
+	line-height: 1.6;
+}
+
+input, textarea, select {
+	background-color:#fff;
+	border:1px solid #ccc;
+	font-size:20px;
+	width:300px;
+	min-height:30px;
+	display:block;
+	margin: 8px 0 16px;
+}
+
+label {
+	display: block;
+}
+
+textarea {
+		min-height:200px;
+}
+
+
+/* The interesting bit */
+
+input:required, textarea:required {
+	background:url("/tests/formdemo/asterisk_orange.png") no-repeat 280px 7px;						
+}
+
+input:valid, textarea:valid {
+	background:url("/tests/formdemo/tick.png") no-repeat 280px 5px;			
+}		
+
+input:focus:invalid, textarea:focus:invalid {
+	background:url("/tests/formdemo/cancel.png") no-repeat 280px 7px;						
+}
+
+input[type=submit] {
+	padding:10px;
+	background:none;
+	opacity:1.0;
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v5/7YGmE4Ls5b94ct65u07hVQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+}
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT Sans Bold'), local('PTSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/ptsans/v5/0XxGQsSc1g4rdRdjJKZrNL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
