@@ -25,7 +25,7 @@ Go to [https://www.paymentspring.com](https://www.paymentspring.com), create an 
 
 Step 1: Generating a Token
 ---------------------------
-The easiest way to generate a token is to create a form with the input fields for cardholder name, credit card number, csc, expiration month, and expiration year. Make sure these input fields don't have "name" attributes so the sensitive data isn't posted to your server. When the form is submitted, use Javascript to pass in the card information to the [paymentspring.js](https://www.paymentspring.com/js/paymentspring.js) library by calling:
+The easiest way to generate a token is to create a form with the input fields for cardholder name, credit card number, csc, expiration month, and expiration year. Make sure these input fields don't have "name" attributes so the card number and other sensitive data isn't posted to your server. Doing so greatly reduces your PCI requirements. When the form is submitted, use Javascript to pass in the card information to the [paymentspring.js](https://www.paymentspring.com/js/paymentspring.js) library by calling:
 
 ```Javascript
 paymentspring.generateToken(public_key, card_number, csc, card_holder, exp_month, exp_year, callback);
