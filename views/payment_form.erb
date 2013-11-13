@@ -25,48 +25,17 @@
 				   <li><%=e["message"]%></li>
 				<% end end %>
 			</ul>
-			<form action="/" method="post" id="form">
+			<form action="/" method="post" id="form" novalidate>
 				<p class="price"><strong>Amount:</strong> $20.00</p>
 				<label for="name">Cardholder Name</label>
-				<input type="text" id="name" name="name">
+				<input type="text" id="name" name="name" placeholder="John Doe">
 				<label for="cc">Credit Card Number</label>
-				<input type="text" id="cc" name="cc">
-				<label for="csc">CSC</label>
-				<input type="text" id="csc" name="csc">
+				<input type="text" id="cc" name="cc" pattern="\d*" placeholder="4111 1111 1111 1111">
+				<label for="cvc">CVC</label>
+				<input type="text" id="cvc" name="cvc" pattern="\d*" placeholder="123">
 
-				<label for="month">Expiration Month</label>
-				<select id="month">
-					<option></option>
-					<option value="1">01</option>
-					<option value="2">02</option>
-					<option value="3">03</option>
-					<option value="4">04</option>
-					<option value="5">05</option>
-					<option value="6">06</option>
-					<option value="7">07</option>
-					<option value="8">08</option>
-					<option value="9">09</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-				</select>
-
-				<label for="year">Expiration Year</label>
-				<select id="year">
-	                <option></option>
-	                <option value="2013">2013</option>
-	                <option value="2014">2014</option>
-	                <option value="2015">2015</option>
-	                <option value="2016">2016</option>
-	                <option value="2017">2017</option>
-	                <option value="2018">2018</option>
-	                <option value="2019">2019</option>
-	                <option value="2020">2020</option>
-	                <option value="2021">2021</option>
-	                <option value="2022">2022</option>
-	                <option value="2023">2023</option>
-	                <option value="2024">2024</option>
-				</select>
+				<label for="date">Expiration Date</label>
+				<input type="text" id="date" name="date" placeholder="12 / 2016">
 				<p class="warning">Since this account is using test keys, you must use <a href="https://www.paymentspring.com/docs/test_data">valid test card data</a></p>
 				<input type="hidden" name="token" id="token">
 				<input type="button" onClick="makeToken()" value="Charge">
@@ -75,6 +44,7 @@
 
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="https://www.paymentspring.com/js/paymentspring.js"></script>
+		<script src="/js/jquery.payment.js"></script>
 		<script src="/js/main.js"></script>
     </body>
 </html>

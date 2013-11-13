@@ -98,7 +98,14 @@ textarea {
 }
 
 
-/* The interesting bit */
+input {
+	padding: 7px;
+	font-size: 0.8em;
+}
+
+input:focus {
+	border: 1px solid #55A7CA;
+}
 
 input:required, textarea:required {
 	background:url("/tests/formdemo/asterisk_orange.png") no-repeat 280px 7px;						

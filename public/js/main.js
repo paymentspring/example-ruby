@@ -1,9 +1,12 @@
 function makeToken() {
-	cc = $("#cc").val();
-	csc = $("#csc").val();
-	card_exp_month = $("#month").val();
-	card_exp_year = $("#year").val();
+	var cc = $("#cc").val(),
+	csc = $("#cvc").val(),
+	date = $.payment.cardExpiryVal($("#date").val()),
+	card_exp_month = date.month,
+	card_exp_year = date.year,
 	card_owner_name = $("#name").val();
+	
+	cc = cc.replace(/\s+/g, '');
 
 	paymentspring.generateToken(  "test_0b3ec0303553d0096dacbf966258a11689361b1eea80d618d13c11a7a9",
 	                                cc,
@@ -25,3 +28,7 @@ function makeToken() {
 	                    }
 	                });
 }
+
+$('#cc').payment('formatCardNumber');
+$('#date').payment('formatCardExpiry');
+$('#cvc').payment('formatCardCVC');
