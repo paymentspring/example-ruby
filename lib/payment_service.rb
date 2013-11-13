@@ -6,7 +6,6 @@ class PaymentService < Sinatra::Base
    end
 
    post '/' do
-      #test_25e414a1213973ea81a7ceaec9
       token = params["token"]
       begin
           response = RestClient.post('https://test_25e414a1213973ea81a7ceaec9:@api.paymentspring.com/api/v1/charge', { :token => token, :amount => "20000" }) 
