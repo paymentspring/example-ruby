@@ -38,4 +38,6 @@ The token you generated from step 1 is your PCI-safe way of handling credit card
 response = RestClient.post('https://test_25e414a1213973ea81a7ceaec9:@api.paymentspring.com/api/v1/charge', { :token => token, :amount => "20000" })
 ```
 
+For example see: https://github.com/paymentspring/example-ruby/blob/master/lib/payment_service.rb
+
 And that's it! You can verify the charge went through by checking out your PaymentSpring account dashboard.
