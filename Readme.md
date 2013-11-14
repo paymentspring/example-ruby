@@ -1,7 +1,7 @@
 paymentspring/example-ruby
 ===========================
 
-This app shows you how easy it is to start charge credit cards while greatly reducing your compliance.
+This app shows you how easy it is to start charging credit cards while greatly reducing your pci compliance requirements.  This application demonstrates how you can accept card numbers on your website but not actually have the card number flow through your servers.
 
 To have the transactions show up in your PaymentSpring dashboard, replace the public/private keys with your own.
 
