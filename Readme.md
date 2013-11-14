@@ -15,11 +15,6 @@ $ bundle install
 $ bundle exec unicorn
 ```
 
-Troubleshooting
------------------
-If you see any errors after running the last command, please make sure you don't have anything currently running on port 8080.
-
-Step 0: Signing Up
 -------------------
 Go to [https://www.paymentspring.com](https://www.paymentspring.com), create an account, and open up your dashboard. Save your API keys from the Account menu somewhere safe.
 
