@@ -28,6 +28,8 @@ paymentspring.generateToken(public_key, card_number, csc, card_holder, exp_month
 
 The data passed to the callback will contain a JSON formatted response from the PaymentSpring token API. A lot of information is being passed back, but the only thing we need to start charging cards is the "id" field of the JSON. This is the token you will use to charge the credit card. For now, load up the token into a hidden field and submit the form.
 
+For example, see: https://github.com/paymentspring/example-ruby/blob/master/public/js/main.js
+
 Step 2: Charging the Card with the Token
 ----------------------------------------
 The token you generated from step 1 is your PCI-safe way of handling credit card data. If someone malicious were to get ahold of this token, they would also need your private key to do anything with it and even then they would only be able to charge money from the card into your account. Pretty neat, huh? Using your favorite way of consuming a RESTful web service (ours is RestClient), POST to the Charge API of PaymentSpring with your private key, token, and amount you want to charge to charge the credit card. Remember, we are using Ruby for this example, but you can do this with ANY language you want. Just make sure that you are keeping your private key private, so don't bundle it with an Android or iOS app for example.
