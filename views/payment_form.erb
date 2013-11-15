@@ -30,12 +30,12 @@
 				<label for="name">Cardholder Name</label>
 				<input type="text" id="name" name="name" placeholder="John Doe">
 				<label for="cc">Credit Card Number</label>
-				<input type="text" id="cc" name="cc" pattern="\d*" placeholder="4111 1111 1111 1111">
+				<input type="text" id="cc" pattern="\d*" placeholder="4111 1111 1111 1111">
 				<label for="cvc">CVC</label>
-				<input type="text" id="cvc" name="cvc" pattern="\d*" placeholder="123">
+				<input type="text" id="cvc" pattern="\d*" placeholder="123">
 
 				<label for="date">Expiration Date</label>
-				<input type="text" id="date" name="date" placeholder="12 / 2016">
+				<input type="text" id="date"  placeholder="12 / 2016">
 				<p class="warning">Since this account is using test keys, you must use <a href="https://www.paymentspring.com/docs/test_data">valid test card data</a></p>
 				<input type="hidden" name="token" id="token">
 				<input type="button" onClick="makeToken()" value="Charge">
